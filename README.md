@@ -1,6 +1,6 @@
 # North Texans Football Group
 
-Official website for North Texans Football Group, a North Texas soccer club (NTXN).
+Official website for North Texans Football Group (NTXN).
 
 - Contact: ntxnfootball@outlook.com
 - Live site: (no domain registered yet — deployed via GitHub Pages for now)
