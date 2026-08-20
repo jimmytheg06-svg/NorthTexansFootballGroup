@@ -466,16 +466,15 @@ button:focus-visible {
   opacity: 0.55;
 }
 
-.section-retro h2 {
+.section.section-retro h2 {
   color: var(--color-ink);
 }
 
-.section-retro h2::after {
+.section.section-retro h2::after {
   background: rgba(0, 0, 0, 0.55);
 }
 
-.section-retro .section > .container > p,
-.section-retro p {
+.section.section-retro p {
   color: #3c3c3a;
 }
 
