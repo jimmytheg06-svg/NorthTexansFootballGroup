@@ -68,6 +68,46 @@ h1, h2, h3 {
   transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scroll-cue span {
+    animation: none;
+  }
+}
+
+/* Accessibility */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  background: var(--color-red);
+  color: var(--color-white);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  z-index: 1000;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-red);
+  outline-offset: 2px;
+}
+
 /* Header */
 .site-header {
   position: fixed;

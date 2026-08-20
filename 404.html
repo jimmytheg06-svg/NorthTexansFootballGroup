@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | North Texans Football Group</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .not-found {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: radial-gradient(120% 120% at 50% -10%, var(--color-navy-2) 0%, var(--color-navy) 45%, var(--color-navy-dark) 100%);
+      color: var(--color-white);
+      padding: 24px;
+    }
+    .not-found img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      margin-bottom: 24px;
+    }
+    .not-found h1 {
+      font-size: clamp(48px, 10vw, 96px);
+      margin: 0;
+      color: var(--color-red);
+    }
+    .not-found p {
+      max-width: 420px;
+      opacity: 0.8;
+      margin: 12px 0 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="not-found">
+    <img src="images/logo.png" alt="North Texans Football Group crest" />
+    <h1>404</h1>
+    <p>This page ran offside. The page you're looking for doesn't exist.</p>
+    <a class="btn btn-primary" href="/NorthTexansFootballGroup/">Back To Home</a>
+  </div>
+</body>
+</html>

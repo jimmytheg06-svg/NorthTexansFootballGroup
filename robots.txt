@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jimmytheg06-svg.github.io/NorthTexansFootballGroup/sitemap.xml
