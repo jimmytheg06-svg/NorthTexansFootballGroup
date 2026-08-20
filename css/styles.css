@@ -70,17 +70,9 @@ a {
 }
 
 .brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--color-red);
-  color: var(--color-white);
-  font-weight: 800;
-  font-size: 15px;
-  letter-spacing: 0.5px;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
 }
 
 .brand-name {
@@ -129,6 +121,13 @@ a {
   color: var(--color-white);
   padding: 96px 0;
   text-align: center;
+}
+
+.hero-logo {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin: 0 auto 24px;
 }
 
 .hero h1 {
