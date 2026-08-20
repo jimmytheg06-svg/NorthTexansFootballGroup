@@ -3,23 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>North Texans Football Group</title>
+  <title>North Texans Football Group | NTXN</title>
   <meta name="description" content="North Texans Football Group — building community through football in North Texas." />
   <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" id="siteHeader">
     <div class="container nav">
       <a class="brand" href="#top">
-        <img class="brand-mark" src="images/logo.png" alt="North Texans Football Group logo" />
+        <img class="brand-mark" src="images/logo.png" alt="North Texans Football Group crest" />
         <span class="brand-name">North Texans<br />Football Group</span>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="#about">About</a>
         <a href="#programs">Programs</a>
         <a href="#schedule">Schedule</a>
         <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Join The Club</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -29,42 +33,102 @@
 
   <main id="top">
     <section class="hero">
+      <div class="hero-facets" aria-hidden="true">
+        <span class="facet facet-1"></span>
+        <span class="facet facet-2"></span>
+        <span class="facet facet-3"></span>
+      </div>
       <div class="container hero-inner">
         <img class="hero-logo" src="images/logo.png" alt="North Texans Football Group crest" />
-        <h1>North Texans Football Group</h1>
-        <p class="tagline">Community. Discipline. Football.</p>
-        <p class="hero-sub">Building athletes and character across North Texas — on and off the field.</p>
+        <p class="eyebrow">Est. 2026 &middot; North Texas</p>
+        <h1>NORTH TEXANS<br /><span class="accent">FOOTBALL GROUP</span></h1>
+        <p class="hero-sub">Building football players and character across North Texas — on and off the field.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#contact">Get In Touch</a>
+          <a class="btn btn-primary" href="#contact">Join The Club</a>
           <a class="btn btn-outline" href="#programs">Our Programs</a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#stats" aria-label="Scroll down">
+        <span></span>
+      </a>
+    </section>
+
+    <section id="stats" class="stats-strip">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <span class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="stat-label">Est. 2026</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-9.5-9.1C.7 8 2.4 4.5 6 4c2-.3 3.7.7 6 3 2.3-2.3 4-3.3 6-3 3.6.5 5.3 4 3.5 7.9C19 16.4 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="stat-label">North Texas Based</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.4-3.6 4.3-5.5 7.5-5.5s6.1 1.9 7.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+          <span class="stat-label">All Ages Welcome</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 21V10l8-6 8 6v11" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="stat-label">Community First</span>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="container">
-        <h2>About Us</h2>
-        <p>
-          North Texans Football Group is dedicated to developing football players and
-          building community throughout North Texas. We're just getting started —
-          check back soon for more about our mission, coaching staff, and story.
-        </p>
+    <section id="about" class="section about">
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <p class="section-eyebrow">Who We Are</p>
+          <h2>Built for North Texas football.</h2>
+          <p>
+            North Texans Football Group is a newly founded club dedicated to developing
+            football players and building community throughout North Texas. We're just
+            getting started — check back soon for more about our mission, coaching staff,
+            and story.
+          </p>
+          <ul class="value-pills">
+            <li>Discipline</li>
+            <li>Community</li>
+            <li>Growth</li>
+            <li>Respect</li>
+          </ul>
+        </div>
+        <div class="about-crest reveal" aria-hidden="true">
+          <img src="images/logo.png" alt="" />
+        </div>
       </div>
     </section>
 
     <section id="programs" class="section section-alt">
       <div class="container">
+        <p class="section-eyebrow">What We Offer</p>
         <h2>Programs</h2>
         <div class="card-grid">
-          <div class="card">
+          <div class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.4-3.6 4.3-5.5 7.5-5.5s6.1 1.9 7.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
             <h3>Youth Football</h3>
             <p>Details coming soon.</p>
           </div>
-          <div class="card">
+          <div class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M4 7l8-5 8 5M4 17l8 5 8-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
             <h3>Training &amp; Camps</h3>
             <p>Details coming soon.</p>
           </div>
-          <div class="card">
+          <div class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M9.5 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM17.5 20v-2a4 4 0 0 0-2.7-3.8M14.5 2.2a4 4 0 0 1 0 7.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
             <h3>Community Events</h3>
             <p>Details coming soon.</p>
           </div>
@@ -72,15 +136,39 @@
       </div>
     </section>
 
-    <section id="schedule" class="section">
+    <section id="schedule" class="section schedule">
       <div class="container">
+        <p class="section-eyebrow">Coming Up</p>
         <h2>Schedule</h2>
-        <p>Our schedule will be posted here once finalized. Check back soon.</p>
+        <div class="match-card reveal">
+          <div class="match-side">
+            <img src="images/logo.png" alt="North Texans Football Group" />
+            <span>NTXN</span>
+          </div>
+          <div class="match-mid">
+            <span class="match-status">Schedule TBD</span>
+            <span class="match-vs">VS</span>
+          </div>
+          <div class="match-side">
+            <span class="match-tbd">?</span>
+            <span>TBD</span>
+          </div>
+        </div>
+        <p class="schedule-note">Our schedule will be posted here once finalized. Check back soon.</p>
       </div>
     </section>
 
-    <section id="contact" class="section section-alt">
-      <div class="container contact-inner">
+    <section class="cta-band">
+      <div class="container cta-inner reveal">
+        <h2>Ready to join the club?</h2>
+        <p>Reach out today — no experience required, just a love for football.</p>
+        <a class="btn btn-light" href="#contact">Join The Club</a>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container contact-inner reveal">
+        <p class="section-eyebrow">Get In Touch</p>
         <h2>Contact Us</h2>
         <p>Have questions or want to get involved? Reach out — we'd love to hear from you.</p>
         <a class="btn btn-primary" href="mailto:ntxnfootball@outlook.com">ntxnfootball@outlook.com</a>
@@ -89,7 +177,8 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="container footer-inner">
+      <img class="footer-logo" src="images/logo.png" alt="North Texans Football Group crest" />
       <p>&copy; <span id="year"></span> North Texans Football Group. All rights reserved.</p>
     </div>
   </footer>
