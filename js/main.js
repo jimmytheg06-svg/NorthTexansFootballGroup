@@ -1,10 +1,36 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const hero = document.querySelector(".hero");
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => hero.classList.add("is-loaded"));
+});
+
 const header = document.getElementById("siteHeader");
 const backToTop = document.getElementById("backToTop");
+const heroLogo = document.querySelector(".hero-logo");
+const facets = document.querySelectorAll(".facet");
+const heroHeight = () => hero.offsetHeight;
+
+let ticking = false;
 const onScroll = () => {
   header.classList.toggle("scrolled", window.scrollY > 40);
   backToTop.classList.toggle("visible", window.scrollY > 500);
+
+  if (!prefersReducedMotion && !ticking) {
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      if (y > 0 && y < heroHeight()) {
+        heroLogo.style.transform = `translateY(${y * 0.18}px)`;
+        facets.forEach((facet, i) => {
+          facet.style.transform = `translateY(${y * (0.08 + i * 0.05)}px)`;
+        });
+      }
+      ticking = false;
+    });
+  }
 };
 onScroll();
 window.addEventListener("scroll", onScroll, { passive: true });
