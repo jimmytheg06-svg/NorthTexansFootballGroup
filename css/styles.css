@@ -2,17 +2,20 @@
   --color-navy: #0b1f3a;
   --color-navy-2: #13294f;
   --color-navy-dark: #050d1a;
+  --color-bg: #07090d;
+  --color-surface: #131a24;
   --color-red: #c8102e;
   --color-red-dark: #8f0c21;
   --color-steel: #9fb3c8;
   --color-white: #ffffff;
-  --color-gray-50: #f6f7f9;
-  --color-gray-100: #eceff3;
-  --color-gray-600: #5b6472;
-  --color-gray-900: #12151c;
+  --color-gray-50: #0d1219;
+  --color-gray-100: #171f2b;
+  --color-gray-600: #93a6bd;
+  --color-gray-900: #eef1f6;
+  --color-heading: #f2f5f9;
   --radius: 12px;
-  --shadow: 0 10px 30px rgba(5, 13, 26, 0.12);
-  --shadow-lg: 0 24px 60px rgba(5, 13, 26, 0.28);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
   --max-width: 1140px;
   --font-display: "Barlow Condensed", var(--font-sans);
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
@@ -30,7 +33,9 @@ body {
   margin: 0;
   font-family: var(--font-sans);
   color: var(--color-gray-900);
-  background: var(--color-white);
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+  background-blend-mode: overlay;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -447,10 +452,21 @@ button:focus-visible {
 }
 
 .section h2 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   font-size: 36px;
   font-weight: 800;
   margin: 0 0 20px;
-  color: var(--color-navy);
+  color: var(--color-heading);
+}
+
+.section h2::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  min-width: 32px;
 }
 
 .section > .container > p,
@@ -481,6 +497,7 @@ button:focus-visible {
 
 .value-pills li {
   background: var(--color-navy);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--color-white);
   font-family: var(--font-display);
   font-weight: 600;
@@ -504,7 +521,7 @@ button:focus-visible {
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(11, 31, 58, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(200, 16, 46, 0.14) 0%, transparent 70%);
 }
 
 .about-crest img {
@@ -512,7 +529,7 @@ button:focus-visible {
   height: 260px;
   object-fit: contain;
   position: relative;
-  filter: drop-shadow(0 16px 30px rgba(11, 31, 58, 0.18));
+  filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.5));
 }
 
 /* Cards */
@@ -524,7 +541,8 @@ button:focus-visible {
 }
 
 .card {
-  background: var(--color-white);
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
   padding: 32px 28px;
   box-shadow: var(--shadow);
@@ -553,7 +571,7 @@ button:focus-visible {
 
 .card h3 {
   margin: 0 0 8px;
-  color: var(--color-navy);
+  color: var(--color-heading);
   font-size: 20px;
 }
 
@@ -706,7 +724,8 @@ button:focus-visible {
 }
 
 .sponsor-card {
-  background: var(--color-white);
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
   padding: 32px 20px;
   box-shadow: var(--shadow);
@@ -722,8 +741,9 @@ button:focus-visible {
 .sponsor-wordmark {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 26px;
-  letter-spacing: 0.5px;
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .sponsor-wordmark--solar {
@@ -744,7 +764,7 @@ button:focus-visible {
 .sponsor-card--empty {
   background: transparent;
   box-shadow: none;
-  border: 1.5px dashed var(--line, rgba(91, 112, 137, 0.35));
+  border: 1.5px dashed rgba(159, 179, 200, 0.3);
 }
 
 .sponsor-slot-label {
@@ -768,6 +788,7 @@ button:focus-visible {
   justify-content: space-between;
   gap: 24px;
   background: var(--color-navy);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--color-white);
   border-radius: var(--radius);
   padding: 36px 40px;
@@ -902,7 +923,8 @@ button:focus-visible {
 
 /* Footer */
 .site-footer {
-  background: var(--color-navy-dark);
+  background: var(--color-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.7);
   padding: 40px 0;
   text-align: center;
