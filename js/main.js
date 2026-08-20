@@ -1,11 +1,17 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const header = document.getElementById("siteHeader");
+const backToTop = document.getElementById("backToTop");
 const onScroll = () => {
   header.classList.toggle("scrolled", window.scrollY > 40);
+  backToTop.classList.toggle("visible", window.scrollY > 500);
 };
 onScroll();
 window.addEventListener("scroll", onScroll, { passive: true });
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
@@ -37,3 +43,23 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.15 }
 );
 revealTargets.forEach((el) => revealObserver.observe(el));
+
+const navLinkEls = document.querySelectorAll("[data-nav-link]");
+const spySections = Array.from(navLinkEls)
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+
+const spyObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = `#${entry.target.id}`;
+        navLinkEls.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === id);
+        });
+      }
+    });
+  },
+  { rootMargin: "-45% 0px -45% 0px" }
+);
+spySections.forEach((section) => spyObserver.observe(section));

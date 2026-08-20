@@ -50,10 +50,10 @@
         <span class="brand-name">North Texans<br />Football Group</span>
       </a>
       <nav class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#programs">Programs</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" data-nav-link>About</a>
+        <a href="#programs" data-nav-link>Programs</a>
+        <a href="#schedule" data-nav-link>Schedule</a>
+        <a href="#contact" data-nav-link>Contact</a>
         <a class="nav-cta" href="#contact">Join The Club</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -132,7 +132,7 @@
           </ul>
         </div>
         <div class="about-crest reveal" aria-hidden="true">
-          <img src="images/icon-320.png" alt="" width="260" height="260" />
+          <img src="images/icon-320.png" alt="" width="260" height="260" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
@@ -173,7 +173,7 @@
         <h2>Schedule</h2>
         <div class="match-card reveal">
           <div class="match-side">
-            <img src="images/icon-120.png" alt="North Texans Football Group" width="56" height="56" />
+            <img src="images/icon-120.png" alt="North Texans Football Group" width="56" height="56" loading="lazy" decoding="async" />
             <span>NTXN</span>
           </div>
           <div class="match-mid">
@@ -213,6 +213,10 @@
       <p>&copy; <span id="year"></span> North Texans Football Group. All rights reserved.</p>
     </div>
   </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
 
   <script src="js/main.js"></script>
 </body>
