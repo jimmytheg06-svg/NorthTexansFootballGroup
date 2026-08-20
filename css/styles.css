@@ -502,7 +502,7 @@ button:focus-visible {
 }
 
 .section-retro .about-crest img {
-  filter: grayscale(1) contrast(1.05) drop-shadow(0 16px 26px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.25));
 }
 
 .section-retro .match-card {
