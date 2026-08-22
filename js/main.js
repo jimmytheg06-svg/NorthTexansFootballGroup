@@ -10,7 +10,6 @@ requestAnimationFrame(() => {
 const header = document.getElementById("siteHeader");
 const backToTop = document.getElementById("backToTop");
 const heroLogo = document.querySelector(".hero-logo");
-const heroPhoto = document.querySelector(".hero-photo");
 const heroHeight = () => hero.offsetHeight;
 
 let ticking = false;
@@ -24,7 +23,6 @@ const onScroll = () => {
       const y = window.scrollY;
       if (y > 0 && y < heroHeight()) {
         heroLogo.style.transform = `translateY(${y * 0.18}px)`;
-        if (heroPhoto) heroPhoto.style.transform = `translateY(${y * 0.12}px)`;
       }
       ticking = false;
     });

@@ -81,17 +81,37 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  background-color: var(--color-bg);
+}
+
 body {
   margin: 0;
   font-family: var(--font-sans);
   color: var(--color-gray-900);
-  background-color: var(--color-bg);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
   background-blend-mode: overlay;
   background-repeat: repeat;
   animation: grain-drift 20s linear infinite;
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+}
+
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(5, 9, 8, 0.4) 0%, rgba(5, 9, 8, 0.6) 45%, rgba(5, 9, 8, 0.8) 100%),
+    url("../images/about-story-banner.jpg") center 68% / cover no-repeat;
+  filter: saturate(0.7);
+}
+
+@media (max-width: 720px) {
+  .site-bg {
+    background-position: center, 55% 62%;
+  }
 }
 
 @keyframes grain-drift {
@@ -192,6 +212,7 @@ button:focus-visible {
   z-index: 100;
   background: linear-gradient(180deg, rgba(10, 9, 8, 0.92) 0%, rgba(10, 9, 8, 0.8) 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   transition: box-shadow 0.25s ease;
 }
@@ -316,21 +337,11 @@ button:focus-visible {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--color-navy-dark);
+  background: transparent;
   color: var(--color-white);
   text-align: center;
   overflow: hidden;
   padding: 120px 0 80px;
-}
-
-.hero-photo {
-  position: absolute;
-  inset: -14% -10%;
-  background-image: url("../images/about-story-banner.jpg");
-  background-size: cover;
-  background-position: center 72%;
-  filter: saturate(0.7);
-  will-change: transform;
 }
 
 .hero-overlay {
@@ -525,7 +536,9 @@ button:focus-visible {
 
 /* Stats strip */
 .stats-strip {
-  background: var(--color-navy-dark);
+  background: rgba(5, 9, 10, 0.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   padding: 40px 0;
 }
 
@@ -570,7 +583,9 @@ button:focus-visible {
 }
 
 .section-alt {
-  background: var(--color-gray-50);
+  background: rgba(13, 18, 25, 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 
 /* Retro faded/grainy paper sections — B&W contrast beats against the black theme */
@@ -825,7 +840,9 @@ button:focus-visible {
 /* Kit section — dark, grainy, Santos-inspired moment */
 .kit-section {
   position: relative;
-  background: linear-gradient(165deg, #0d1524 0%, #060a12 100%);
+  background: linear-gradient(165deg, rgba(13, 21, 36, 0.78) 0%, rgba(6, 10, 18, 0.85) 100%);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   padding: 96px 0;
   overflow: hidden;
   text-align: center;
@@ -1148,6 +1165,12 @@ button:focus-visible {
 }
 
 /* Contact */
+.contact {
+  background: rgba(5, 9, 10, 0.78);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
 .contact-inner {
   text-align: center;
 }
@@ -1238,7 +1261,9 @@ button:focus-visible {
 
 /* Footer */
 .site-footer {
-  background: var(--color-bg);
+  background: rgba(5, 9, 8, 0.85);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.7);
   padding: 40px 0;
@@ -1354,10 +1379,6 @@ button:focus-visible {
 }
 
 @media (max-width: 720px) {
-  .hero-photo {
-    background-position: 55% 62%;
-  }
-
   .nav-links {
     position: fixed;
     inset: 0;
