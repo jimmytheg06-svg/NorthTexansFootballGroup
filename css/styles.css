@@ -156,6 +156,10 @@ h1, h2, h3 {
   .kit-grain {
     animation: none !important;
   }
+
+  .hero-canvas {
+    display: none !important;
+  }
 }
 
 /* Accessibility */
@@ -339,6 +343,22 @@ button:focus-visible {
   left: -10vmax;
   clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
   opacity: 0.06;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+
+.hero-canvas.is-active {
+  opacity: 0.85;
 }
 
 .hero-inner {
