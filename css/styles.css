@@ -95,13 +95,11 @@ body {
   animation: grain-drift 20s linear infinite;
   line-height: 1.6;
   overflow-x: hidden;
-  position: relative;
 }
 
 .site-bg {
   position: fixed;
   inset: 0;
-  z-index: -1;
   background:
     linear-gradient(180deg, rgba(5, 9, 8, 0.4) 0%, rgba(5, 9, 8, 0.6) 45%, rgba(5, 9, 8, 0.8) 100%),
     url("../images/about-story-banner.jpg") center 68% / cover no-repeat;
