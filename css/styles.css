@@ -1286,7 +1286,7 @@ button:focus-visible {
   transform: translateY(-2px);
 }
 
-/* Hero — left-aligned editorial layout with crest plaque on wide viewports */
+/* Hero — left-aligned editorial layout, crest beside the headline on wide viewports */
 @media (min-width: 861px) {
   .hero {
     align-items: flex-start;
@@ -1294,9 +1294,15 @@ button:focus-visible {
   }
 
   .hero-inner {
-    align-items: flex-start;
-    max-width: 620px;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    max-width: 900px;
     padding-left: 24px;
+  }
+
+  .hero-text {
+    text-align: left;
   }
 
   .hero-sub {
@@ -1308,13 +1314,10 @@ button:focus-visible {
   }
 
   .hero-logo {
-    position: absolute;
-    left: max(24px, calc((100vw - var(--max-width)) / 2 + 24px));
-    bottom: 48px;
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 180px;
     margin: 0;
-    z-index: 2;
+    flex-shrink: 0;
   }
 }
 
