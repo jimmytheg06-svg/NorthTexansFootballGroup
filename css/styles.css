@@ -190,14 +190,14 @@ button:focus-visible {
   left: 0;
   right: 0;
   z-index: 100;
-  background: transparent;
-  transition: background 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+  background: linear-gradient(180deg, rgba(10, 9, 8, 0.92) 0%, rgba(10, 9, 8, 0.8) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(8px);
+  transition: box-shadow 0.25s ease;
 }
 
 .site-header.scrolled {
-  background: rgba(11, 31, 58, 0.85);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 24px rgba(5, 13, 26, 0.25);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 .nav {
@@ -250,9 +250,29 @@ button:focus-visible {
   opacity: 1;
 }
 
+.nav-links a[data-nav-link] {
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.nav-links a[data-nav-link]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-red);
+  transition: right 0.2s ease;
+}
+
 .nav-links a[data-nav-link].active {
   opacity: 1;
   color: var(--color-red);
+}
+
+.nav-links a[data-nav-link].active::after {
+  right: 0;
 }
 
 .nav-cta {
@@ -1172,6 +1192,48 @@ button:focus-visible {
   height: 22px;
 }
 
+/* Values strip */
+.values-strip {
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+  padding: 32px 0;
+}
+
+.values-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.value-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.value-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-ink);
+  color: var(--color-ink);
+}
+
+.value-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
 /* Footer */
 .site-footer {
   background: var(--color-bg);
@@ -1224,6 +1286,38 @@ button:focus-visible {
   transform: translateY(-2px);
 }
 
+/* Hero — left-aligned editorial layout with crest plaque on wide viewports */
+@media (min-width: 861px) {
+  .hero {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-inner {
+    align-items: flex-start;
+    max-width: 620px;
+    padding-left: 24px;
+  }
+
+  .hero-sub {
+    margin: 0 0 40px;
+  }
+
+  .hero-cta {
+    justify-content: flex-start;
+  }
+
+  .hero-logo {
+    position: absolute;
+    left: max(24px, calc((100vw - var(--max-width)) / 2 + 24px));
+    bottom: 48px;
+    width: 140px;
+    height: 140px;
+    margin: 0;
+    z-index: 2;
+  }
+}
+
 /* Responsive nav */
 @media (max-width: 860px) {
   .stats-grid {
@@ -1246,6 +1340,11 @@ button:focus-visible {
 
   .about-banner-img {
     max-height: 44vh;
+  }
+
+  .values-strip-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 24px;
   }
 }
 
