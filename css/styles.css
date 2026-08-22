@@ -50,11 +50,12 @@
   --color-navy: #0b1f3a;
   --color-navy-2: #13294f;
   --color-navy-dark: #050d1a;
-  --color-bg: #07090d;
+  --color-bg: #0a0908;
   --color-surface: #131a24;
   --color-red: #c8102e;
   --color-red-dark: #8f0c21;
   --color-steel: #9fb3c8;
+  --color-gold: #c79a52;
   --color-white: #ffffff;
   --color-gray-50: #0d1219;
   --color-gray-100: #171f2b;
@@ -667,6 +668,35 @@ button:focus-visible {
 }
 
 /* About */
+.about.section {
+  padding-top: 0;
+}
+
+.about-banner {
+  position: relative;
+  height: 280px;
+  margin-bottom: 56px;
+  background-image: linear-gradient(180deg, rgba(5, 9, 8, 0.1) 0%, rgba(5, 9, 8, 0.85) 100%), url("../images/hero-himalayan-field.jpg");
+  background-size: cover;
+  background-position: center 12%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.about-banner-label {
+  padding: 0 24px 22px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-gold);
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -1209,6 +1239,14 @@ button:focus-visible {
 
   .about-copy .value-pills {
     justify-content: center;
+  }
+
+  .about-banner {
+    height: 200px;
+  }
+
+  .about-banner-label {
+    text-align: center;
   }
 }
 
