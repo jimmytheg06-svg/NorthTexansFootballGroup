@@ -703,32 +703,9 @@ button:focus-visible {
 }
 
 /* About */
-.about.section {
-  padding-top: 0;
-}
-
 .about .section-eyebrow {
   color: var(--color-gold);
   opacity: 1;
-}
-
-.about-banner {
-  width: 100%;
-  max-height: 70vh;
-  margin-bottom: 56px;
-  background: var(--color-paper-2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.about-banner-img {
-  width: 100%;
-  height: auto;
-  max-height: 70vh;
-  object-fit: contain;
-  display: block;
 }
 
 .about-grid {
@@ -1360,14 +1337,6 @@ button:focus-visible {
 
   .about-copy .value-pills {
     justify-content: center;
-  }
-
-  .about-banner {
-    max-height: 44vh;
-  }
-
-  .about-banner-img {
-    max-height: 44vh;
   }
 
   .values-strip-grid {
