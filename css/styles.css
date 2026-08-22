@@ -325,10 +325,11 @@ button:focus-visible {
 
 .hero-photo {
   position: absolute;
-  inset: -6% -4%;
-  background-image: url("../images/hero-himalayan-field.jpg");
+  inset: -14% -10%;
+  background-image: url("../images/about-story-banner.jpg");
   background-size: cover;
-  background-position: center 62%;
+  background-position: center 72%;
+  filter: saturate(0.7);
   will-change: transform;
 }
 
@@ -337,8 +338,9 @@ button:focus-visible {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(120% 90% at 50% 105%, rgba(5, 9, 13, 0.8), transparent 60%),
-    linear-gradient(180deg, rgba(5, 9, 13, 0.55) 0%, rgba(5, 9, 13, 0.08) 32%, rgba(5, 9, 13, 0.22) 58%, rgba(5, 9, 13, 0.78) 100%);
+    radial-gradient(130% 100% at 50% 105%, rgba(5, 9, 8, 0.85), transparent 62%),
+    radial-gradient(120% 80% at 50% -5%, rgba(5, 9, 8, 0.55), transparent 60%),
+    linear-gradient(180deg, rgba(5, 9, 8, 0.5) 0%, rgba(5, 9, 8, 0.1) 30%, rgba(5, 9, 8, 0.25) 56%, rgba(5, 9, 8, 0.82) 100%);
 }
 
 .hero-inner {
@@ -1353,7 +1355,7 @@ button:focus-visible {
 
 @media (max-width: 720px) {
   .hero-photo {
-    background-position: 78% 60%;
+    background-position: 55% 62%;
   }
 
   .nav-links {
