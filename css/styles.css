@@ -256,6 +256,16 @@ button:focus-visible {
   color: var(--color-white);
 }
 
+.ticker-badge--loss {
+  background: var(--color-red);
+  color: var(--color-white);
+}
+
+.ticker-badge--draw {
+  background: var(--color-steel);
+  color: var(--color-ink);
+}
+
 .ticker-sep {
   opacity: 0.5;
 }
@@ -730,6 +740,14 @@ button:focus-visible {
 
 .section-retro .match-score {
   color: #1a8f4c;
+}
+
+.section-retro .match-score--loss {
+  color: var(--color-red);
+}
+
+.section-retro .match-score--draw {
+  color: #55554f;
 }
 
 .section-retro .schedule-note {
@@ -1576,6 +1594,16 @@ button:focus-visible {
   color: var(--color-white);
 }
 
+.match-badge--loss {
+  background: var(--color-red);
+  color: var(--color-white);
+}
+
+.match-badge--draw {
+  background: var(--color-steel);
+  color: var(--color-ink);
+}
+
 .match-mono {
   display: flex;
   align-items: center;
@@ -1605,6 +1633,14 @@ button:focus-visible {
   font-weight: 800;
   font-size: 26px;
   color: #2fbf6e;
+}
+
+.match-score--loss {
+  color: var(--color-red);
+}
+
+.match-score--draw {
+  color: var(--color-steel);
 }
 
 .fixture-list {

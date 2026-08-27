@@ -1,0 +1,13 @@
+{
+  "name": "north-texans-football-group-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static site for North Texans Football Group. The only Node dependency here is Playwright, used solely by scripts/update-clubverse.mjs to pull our own team's public schedule/results/standings from ClubVerse on a weekly schedule.",
+  "type": "module",
+  "scripts": {
+    "update-clubverse": "node scripts/update-clubverse.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}
