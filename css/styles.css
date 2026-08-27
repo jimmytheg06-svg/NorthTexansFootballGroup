@@ -674,9 +674,14 @@ button:focus-visible {
   color: var(--color-ink);
 }
 
-.section-retro .match-tbd {
+.section-retro .match-mono {
+  background: transparent;
   border-color: var(--color-ink);
   color: var(--color-ink);
+}
+
+.section-retro .match-score {
+  color: #1a8f4c;
 }
 
 .section-retro .schedule-note {
@@ -1288,6 +1293,13 @@ button:focus-visible {
   letter-spacing: 1px;
 }
 
+.sponsor-logo {
+  max-width: 160px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 .sponsor-wordmark--solar {
   color: #c99a3d;
 }
@@ -1327,10 +1339,32 @@ button:focus-visible {
 
 /* Schedule / match card */
 .schedule .container > h2 {
-  margin-bottom: 36px;
+  margin-bottom: 16px;
+}
+
+.schedule-lede {
+  max-width: 620px;
+  margin: 0 0 36px;
+  color: var(--color-gray-600);
+  font-size: 16px;
+}
+
+.schedule-lede strong {
+  color: var(--color-heading);
+}
+
+.section-retro .schedule-lede strong {
+  color: var(--color-ink);
+}
+
+.schedule-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
 .match-card {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1342,6 +1376,97 @@ button:focus-visible {
   padding: 36px 40px;
   box-shadow: var(--shadow-lg);
   max-width: 640px;
+  flex: 1 1 460px;
+}
+
+.match-badge {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 14px;
+  border-radius: 999px;
+}
+
+.match-badge--win {
+  background: #1a8f4c;
+  color: var(--color-white);
+}
+
+.match-mono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--color-white);
+  margin: 0 auto;
+}
+
+.match-score {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  color: #2fbf6e;
+}
+
+.fixture-list {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  max-width: 640px;
+}
+
+.fixture-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 14px;
+}
+
+.section-retro .fixture-list li {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+}
+
+.fixture-date {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-red);
+  flex: 0 0 70px;
+}
+
+.fixture-teams {
+  flex: 1;
+}
+
+.fixture-teams em {
+  font-style: normal;
+  opacity: 0.6;
+  margin: 0 4px;
+}
+
+.fixture-time {
+  color: var(--color-gray-600);
+  flex: 0 0 auto;
+}
+
+.section-retro .fixture-time {
+  color: #55554f;
 }
 
 .match-side {
@@ -1357,23 +1482,6 @@ button:focus-visible {
   font-size: 14px;
 }
 
-.match-side img {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-}
-
-.match-tbd {
-  width: 56px;
-  height: 56px;
-  border: 2px dashed var(--color-steel);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  color: var(--color-steel);
-}
 
 .match-mid {
   display: flex;
