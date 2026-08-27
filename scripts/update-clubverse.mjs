@@ -179,7 +179,7 @@ function fixtureDateShort(f) {
 
 // --- Standings -----------------------------------------------------------
 
-function parseStanding(lines, teamName) {
+function parseStandingsTable(lines) {
   const idx = lines.indexOf("Standings");
   assert(idx !== -1, '"Standings" section not found');
   // The header row keeps its cells tab-joined on one line by innerText
@@ -187,13 +187,31 @@ function parseStanding(lines, teamName) {
   const headerIdx = lines.findIndex((l, i) => i > idx && l.includes("PTS"));
   assert(headerIdx !== -1, "standings header row not found");
 
-  for (let i = headerIdx + 1; i < lines.length - 1; i++) {
+  const rows = [];
+  for (let i = headerIdx + 1; i < lines.length - 2; i++) {
     if (lines[i] === "Knockout Bracket" || lines[i] === "Advances to knockout bracket") break;
-    if (lines[i + 1] === teamName && /^\d+$/.test(lines[i])) {
-      return Number(lines[i]);
+    // pattern: "1" (rank) / TeamName / "PL W D L GF GA GD PTS" (tab-joined)
+    if (/^\d+$/.test(lines[i]) && lines[i + 1] && lines[i + 2]) {
+      const stats = lines[i + 2].match(/^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([+-]?\d+)\s+(\d+)$/);
+      if (stats) {
+        rows.push({
+          rank: Number(lines[i]),
+          team: lines[i + 1],
+          pl: Number(stats[1]),
+          w: Number(stats[2]),
+          d: Number(stats[3]),
+          l: Number(stats[4]),
+          gf: Number(stats[5]),
+          ga: Number(stats[6]),
+          gd: stats[7],
+          pts: Number(stats[8]),
+        });
+        i += 2;
+      }
     }
   }
-  return null;
+  assert(rows.length > 0, "no standings rows parsed");
+  return rows;
 }
 
 // --- Player stats --------------------------------------------------------
@@ -236,25 +254,29 @@ function parsePlayerStats(lines, teamName) {
 // --- HTML generation -------------------------------------------------
 
 function renderTicker({ last, next }) {
+  // Both items (when present) are always in the markup; js/main.js rotates
+  // which one carries "is-active" on a timer. Only the first gets it here.
   const items = [];
   if (last) {
     const won = last.us > last.them;
     const drew = last.us === last.them;
     const cls = won ? "win" : drew ? "draw" : "loss";
     const letter = won ? "W" : drew ? "D" : "L";
-    items.push(
-      `<span class="ticker-item ticker-last"><span class="ticker-badge ticker-badge--${cls}">${letter}</span> ${last.us}&ndash;${last.them} vs ${displayName(last.opponent)}</span>`
-    );
+    items.push({
+      cls: "ticker-last",
+      html: `<span class="ticker-badge ticker-badge--${cls}">${letter}</span> ${last.us}&ndash;${last.them} vs ${displayName(last.opponent)}`,
+    });
   }
   if (next) {
-    items.push(
-      `<span class="ticker-item ticker-next"><strong>Next:</strong>&nbsp;vs ${displayName(next.opponent)} &middot; ${fixtureDateShort(next.fixture)}, ${next.time}</span>`
-    );
+    items.push({
+      cls: "ticker-next",
+      html: `<strong>Next:</strong>&nbsp;vs ${displayName(next.opponent)} &middot; ${fixtureDateShort(next.fixture)}, ${next.time}`,
+    });
   }
-  if (items.length === 2) {
-    return `<div class="topbar-ticker">\n          ${items[0]}\n          <span class="ticker-sep" aria-hidden="true">&middot;</span>\n          ${items[1]}\n        </div>`;
-  }
-  return `<div class="topbar-ticker">\n          ${items.join("\n          ")}\n        </div>`;
+  const spans = items
+    .map((item, i) => `<span class="ticker-item ${item.cls}${i === 0 ? " is-active" : ""}">${item.html}</span>`)
+    .join("\n          ");
+  return `<div class="topbar-ticker">\n          ${spans}\n        </div>`;
 }
 
 function renderMatches({ last, next }) {
@@ -302,20 +324,48 @@ function renderMatches({ last, next }) {
   return `<div class="schedule-grid">\n          ${resultCard}\n\n          ${nextCard}\n        </div>`;
 }
 
-function renderFixtureList(remaining) {
-  if (!remaining.length) {
-    return `<ul class="fixture-list reveal">\n        </ul>`;
-  }
-  const items = remaining
-    .map(
-      (f) => `          <li>
-            <span class="fixture-date">${fixtureDateShort(f.fixture)}</span>
-            <span class="fixture-teams">${displayName(f.opponent)} <em>vs</em> ${displayName(TEAM_NAME)}</span>
-            <span class="fixture-time">${f.time}</span>
-          </li>`
-    )
+function renderStandingsTable(rows, teamName) {
+  const trs = rows
+    .map((r) => {
+      const rowCls = r.team === teamName ? ' class="standings-row--us"' : "";
+      return `                <tr${rowCls}>
+                  <td>${r.rank}</td>
+                  <td>${displayName(r.team)}</td>
+                  <td>${r.pl}</td>
+                  <td>${r.w}</td>
+                  <td>${r.d}</td>
+                  <td>${r.l}</td>
+                  <td>${r.gf}</td>
+                  <td>${r.ga}</td>
+                  <td>${r.gd}</td>
+                  <td>${r.pts}</td>
+                </tr>`;
+    })
     .join("\n");
-  return `<ul class="fixture-list reveal">\n${items}\n        </ul>`;
+  return `<div class="stat-leaders reveal">
+          <h3>League Standings</h3>
+          <div class="table-scroll">
+            <table class="stat-table standings-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Team</th>
+                  <th>PL</th>
+                  <th>W</th>
+                  <th>D</th>
+                  <th>L</th>
+                  <th>GF</th>
+                  <th>GA</th>
+                  <th>GD</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+${trs}
+              </tbody>
+            </table>
+          </div>
+        </div>`;
 }
 
 function renderStatsBody(stats) {
@@ -386,10 +436,10 @@ async function main() {
 
   const last = completed.length ? completed[completed.length - 1] : null;
   const next = upcoming.length ? upcoming[0] : null;
-  const remainingUpcoming = upcoming.slice(1);
 
-  const standingRank = parseStanding(lines, TEAM_NAME);
-  const standingText = standingRank ? `${ordinal(standingRank)} in the group` : "in the group";
+  const standingsRows = parseStandingsTable(lines).sort((a, b) => a.rank - b.rank);
+  const ourStanding = standingsRows.find((r) => r.team === TEAM_NAME);
+  const standingText = ourStanding ? `${ordinal(ourStanding.rank)} in the group` : "in the group";
 
   const stats = parsePlayerStats(lines, TEAM_NAME);
 
@@ -397,7 +447,7 @@ async function main() {
   html = replaceMarked(html, "TICKER", renderTicker({ last, next }));
   html = replaceMarked(html, "STANDING", standingText);
   html = replaceMarked(html, "MATCHES", renderMatches({ last, next }));
-  html = replaceMarked(html, "FIXTURES", renderFixtureList(remainingUpcoming));
+  html = replaceMarked(html, "STANDINGS", renderStandingsTable(standingsRows, TEAM_NAME));
   html = replaceMarked(html, "STATS", renderStatsBody(stats));
 
   await writeFile(INDEX_HTML, html, "utf8");

@@ -35,6 +35,17 @@ backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+const tickerItems = document.querySelectorAll(".topbar-ticker .ticker-item");
+if (tickerItems.length > 1 && !prefersReducedMotion) {
+  let tickerIndex = Array.from(tickerItems).findIndex((el) => el.classList.contains("is-active"));
+  if (tickerIndex === -1) tickerIndex = 0;
+  setInterval(() => {
+    tickerItems[tickerIndex].classList.remove("is-active");
+    tickerIndex = (tickerIndex + 1) % tickerItems.length;
+    tickerItems[tickerIndex].classList.add("is-active");
+  }, 20000);
+}
+
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
 

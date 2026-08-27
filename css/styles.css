@@ -234,9 +234,13 @@ button:focus-visible {
 }
 
 .ticker-item {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 6px;
+}
+
+.ticker-item.is-active {
+  display: flex;
 }
 
 .ticker-badge {
@@ -264,17 +268,6 @@ button:focus-visible {
 .ticker-badge--draw {
   background: var(--color-steel);
   color: var(--color-ink);
-}
-
-.ticker-sep {
-  opacity: 0.5;
-}
-
-@media (max-width: 640px) {
-  .ticker-last,
-  .ticker-sep {
-    display: none;
-  }
 }
 
 .topbar-social {
@@ -1756,6 +1749,21 @@ button:focus-visible {
 
 .section-retro .stat-table td:first-child {
   color: var(--color-ink);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.standings-table {
+  min-width: 480px;
+}
+
+.stat-table tr.standings-row--us td,
+.stat-table tr.standings-row--us td:first-child {
+  color: var(--color-red);
+  font-weight: 700;
 }
 
 .match-side {
