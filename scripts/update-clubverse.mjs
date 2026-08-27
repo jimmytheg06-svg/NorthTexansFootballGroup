@@ -345,7 +345,12 @@ function replaceMarked(html, marker, replacement) {
 
 async function main() {
   const browser = await chromium.launch();
-  const page = await browser.newPage();
+  // ClubVerse renders match times client-side from a stored UTC instant
+  // using the browser's local timezone. Pin it to Central time so scraped
+  // times match what fans see, regardless of the CI runner's OS timezone
+  // (GitHub Actions runners default to UTC, which shifted times by +5h).
+  const context = await browser.newContext({ timezoneId: "America/Chicago" });
+  const page = await context.newPage();
   let defaultText, completedText;
   try {
     ({ defaultText, completedText } = await getTournamentText(page));
